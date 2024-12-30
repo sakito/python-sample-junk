@@ -1,0 +1,59 @@
+version = 1
+disable_existing_loggers = false
+
+[root]
+level = "INFO"
+handlers = [
+  "console",
+  "file",
+  "error"
+]
+
+
+[formatter]
+
+[formatters.basic]
+format = "time:%(asctime)-15s	level:%(levelname)-5s	process:%(process)-5d	module:%(module)s	method:%(funcName)s	message:%(message)s"
+datefmt = "%Y-%m-%d %H:%M:%S"
+
+[handlers]
+
+[handlers.console]
+class = "logging.StreamHandler"
+level = "DEBUG"
+formatter = "basic"
+stream = "ext://sys.stdout"
+
+[handlers.file]
+class = "logging.handlers.TimedRotatingFileHandler"
+formatter = "basic"
+filename = "var/log/app.log"
+# 切り替えるタイミング単位(D: day)
+when = 'D'
+# when 毎(この場合は 1日毎)
+interval = 1
+# 保持数
+backupCount = 31
+
+[handlers.error]
+class = "logging.handlers.TimedRotatingFileHandler"
+level = "ERROR"
+formatter = "basic"
+filename = "var/log/err.log"
+when = 'D'
+interval = 1
+backupCount = 31
+
+[loggers]
+
+[loggers.tool]
+# level = "INFO"
+level = "DEBUG"
+handlers = [
+  "console",
+  "file",
+  "error",
+]
+propagate = false
+
+# end
