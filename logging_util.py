@@ -14,6 +14,10 @@ except ModuleNotFoundError:
 
 
 class LoggingUtil:
+    """
+    ログ設定クラス
+    """
+
 
     def __init__(self):
         """
