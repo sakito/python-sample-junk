@@ -4,6 +4,7 @@
 """
 日時関連処理
 """
+
 from datetime import datetime, timedelta
 
 import pytz

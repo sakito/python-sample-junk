@@ -1,0 +1,41 @@
+[project]
+name = "python-sample-junk"
+version = "0.0.1"
+description = "python sample junk"
+authors = [
+  {name = "sakito", email = "sakito@sakito.com"},
+]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Unix",
+  "Operating System :: POSIX :: Linux",
+  "Environment :: Console",
+  "Environment :: MacOS X",
+  "Framework :: Pytest",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+  "pytest>=8",
+  "ruff>=0.8.0",
+  "pytz",
+  "python-dateutil",
+]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests",]
+pythonpath = [".",]
+filterwarnings = ["ignore::DeprecationWarning",]

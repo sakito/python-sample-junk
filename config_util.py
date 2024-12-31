@@ -6,6 +6,7 @@
 
 設定はtomlファイル前提
 """
+
 from pathlib import Path
 
 

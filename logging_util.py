@@ -4,6 +4,7 @@
 """
 ログ関連
 """
+
 import logging.config
 from pathlib import Path
 
@@ -17,7 +18,6 @@ class LoggingUtil:
     """
     ログ設定クラス
     """
-
 
     def __init__(self):
         """

@@ -4,6 +4,7 @@
 """
 toml_util.py テスト
 """
+
 import toml_util as t
 import config
 

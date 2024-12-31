@@ -9,6 +9,7 @@ python 3.11 以上では tomllib 標準
 それ以下の場合 完全互換ライブラリである tomli を利用
 pip install tomli
 """
+
 try:
     import tomllib
 except ModuleNotFoundError:
