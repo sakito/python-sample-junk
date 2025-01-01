@@ -36,7 +36,7 @@ class LoggingUtil:
 
         logging.config.dictConfig(conf)
 
-    def get_logger(self, name='tool'):
+    def get_logger(self, name='all'):
         """
         logger オブジェクト取得
 
@@ -47,4 +47,4 @@ class LoggingUtil:
         return logging.getLogger(name)
 
 
-logger = LoggingUtil().get_logger()
+logger = LoggingUtil().get_logger('debug')

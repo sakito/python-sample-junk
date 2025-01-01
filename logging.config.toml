@@ -1,12 +1,11 @@
 version = 1
 disable_existing_loggers = false
 
-
 [formatter]
 
 [formatters.ssv]
 # Space-Separated Values
-format = "%(levelname)-8s %(name)s %(asctime)-15s %(message)s"
+format = "%(asctime)-19s %(levelname)-8s %(module)s %(funcName)s %(message)s"
 datefmt = "%Y-%m-%dT%H:%M:%S"
 
 [formatters.ltsv]
@@ -47,14 +46,22 @@ backupCount = 31
 
 [loggers]
 
-[loggers.tool]
-#level = "INFO"
-level = "DEBUG"
+[loggers.all]
+level = "INFO"
 handlers = [
   "console",
   "app",
   "error",
 ]
 propagate = false
+
+[loggers.debug]
+level = "DEBUG"
+handlers = [
+  "console",
+]
+propagate = false
+
+
 
 # end
