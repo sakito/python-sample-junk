@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2024 sakito <sakito@sakito.com>
 
-import io_util as t
 import config
+
+import io_util as t
 
 
 def test_read_file():

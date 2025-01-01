@@ -5,8 +5,9 @@
 toml_util.py テスト
 """
 
-import toml_util as t
 import config
+
+import toml_util as t
 
 
 def test_read_toml():

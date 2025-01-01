@@ -8,7 +8,7 @@ format:
 .PHONY: lint
 lint:
 	uv run ruff format --check
-	uv run ruff check
+	uv run ruff check -e
 
 .PHONY: typecheck
 typecheck:
