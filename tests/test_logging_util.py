@@ -10,6 +10,6 @@ def test_logger():
     """
     t.logger.debug('DEBUG テスト')
     t.logger.info('INFO テスト')
-    t.logger.warning('WAARNING テスト')
+    t.logger.warning('WARNING テスト')
     t.logger.error('ERROR テスト')
     t.logger.critical('CRITICAL テスト')

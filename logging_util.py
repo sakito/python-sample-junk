@@ -30,8 +30,9 @@ class LoggingUtil:
             conf = tomllib.load(f)
 
         # ログ出力位置を絶対パスに変換
-        conf['handlers']['file']['filename'] = pwd / conf['handlers']['file']['filename']
-        conf['handlers']['error']['filename'] = pwd / conf['handlers']['file']['filename']
+        for key in conf['handlers'].keys():
+            if 'filename' in conf['handlers'][key]:
+                conf['handlers'][key]['filename'] = pwd / conf['handlers'][key]['filename']
 
         logging.config.dictConfig(conf)
 

@@ -5,15 +5,21 @@ disable_existing_loggers = false
 level = "INFO"
 handlers = [
   "console",
-  "file",
+  "app",
   "error"
 ]
 
 
 [formatter]
 
-[formatters.basic]
-format = "time:%(asctime)-15s	level:%(levelname)-5s	process:%(process)-5d	module:%(module)s	method:%(funcName)s	message:%(message)s"
+[formatters.ssv]
+# Space-Separated Values
+format = "%(levelname)-8s %(name)s %(asctime)-15s %(message)s"
+datefmt = "%Y-%m-%dT%H:%M:%S"
+
+[formatters.ltsv]
+# Labeled Tab-separated Values
+format = "time:%(asctime)s	level:%(levelname)s	process:%(process)s	module:%(module)s	method:%(funcName)s	message:%(message)s"
 datefmt = "%Y-%m-%d %H:%M:%S"
 
 [handlers]
@@ -21,13 +27,15 @@ datefmt = "%Y-%m-%d %H:%M:%S"
 [handlers.console]
 class = "logging.StreamHandler"
 level = "DEBUG"
-formatter = "basic"
+formatter = "ssv"
 stream = "ext://sys.stdout"
 
-[handlers.file]
+[handlers.app]
 class = "logging.handlers.TimedRotatingFileHandler"
-formatter = "basic"
+level = "INFO"
+formatter = "ltsv"
 filename = "var/log/app.log"
+
 # 切り替えるタイミング単位(D: day)
 when = 'D'
 # when 毎(この場合は 1日毎)
@@ -38,7 +46,8 @@ backupCount = 31
 [handlers.error]
 class = "logging.handlers.TimedRotatingFileHandler"
 level = "ERROR"
-formatter = "basic"
+formatter = "ltsv"
+
 filename = "var/log/err.log"
 when = 'D'
 interval = 1
@@ -47,11 +56,11 @@ backupCount = 31
 [loggers]
 
 [loggers.tool]
-# level = "INFO"
+#level = "INFO"
 level = "DEBUG"
 handlers = [
   "console",
-  "file",
+  "app",
   "error",
 ]
 propagate = false
