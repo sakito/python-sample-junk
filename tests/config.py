@@ -10,6 +10,7 @@ from version import get_version
 PRJ_DIR = (Path(__file__).parent / '..').absolute()
 
 INPUT_DIR = PRJ_DIR / 'tests' / 'input'
+OUTPUT_DIR = PRJ_DIR / 'var' / 'tmp'
 
 DEBUG = True
 logger = LoggingUtil().get_logger('debug' if DEBUG else 'all')

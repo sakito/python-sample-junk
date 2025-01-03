@@ -32,6 +32,7 @@ dependencies = [
   "pytz",
   "python-dateutil",
   "python-box",
+  "openpyxl",
 ]
 
 [tool.pytest.ini_options]
