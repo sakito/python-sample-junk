@@ -45,6 +45,3 @@ class LoggingUtil:
         return: logging ログオブジェクト
         """
         return logging.getLogger(name)
-
-
-logger = LoggingUtil().get_logger('debug')

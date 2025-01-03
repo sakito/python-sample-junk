@@ -8,8 +8,9 @@ def test_logger():
     """
     logger
     """
-    t.logger.debug('DEBUG テスト')
-    t.logger.info('INFO テスト')
-    t.logger.warning('WARNING テスト')
-    t.logger.error('ERROR テスト')
-    t.logger.critical('CRITICAL テスト')
+    logger = t.LoggingUtil().get_logger('debug')
+    logger.debug('DEBUG テスト')
+    logger.info('INFO テスト')
+    logger.warning('WARNING テスト')
+    logger.error('ERROR テスト')
+    logger.critical('CRITICAL テスト')
