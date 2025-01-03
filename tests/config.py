@@ -5,6 +5,7 @@
 from pathlib import Path
 
 from logging_util import LoggingUtil
+from version import get_version
 
 PRJ_DIR = (Path(__file__).parent / '..').absolute()
 
@@ -12,3 +13,5 @@ INPUT_DIR = PRJ_DIR / 'tests' / 'input'
 
 DEBUG = True
 logger = LoggingUtil().get_logger('debug' if DEBUG else 'all')
+
+__version__ = get_version()

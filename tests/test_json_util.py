@@ -47,7 +47,7 @@ def test_pretty_json(dict_data):
     """
     pretty_json
     """
-    ret = t.pretty_json(dict_data)
+    actual = t.pretty_json(dict_data)
 
     expected = """{
   "a": 10,
@@ -56,7 +56,7 @@ def test_pretty_json(dict_data):
   }
 }"""
 
-    assert expected == ret
+    assert expected == actual
 
 
 def test_flatten(dict_data):
