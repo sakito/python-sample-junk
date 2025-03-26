@@ -29,15 +29,17 @@ def write_json(data_dict, file_path):
     """
     JSON出力
     """
-    data_dict = None
     try:
         with open(file_path, 'w', encoding='utf-8') as f:
-            data_dict = json.load(f)
+            json.dump(data_dict, f,
+                      indent=2,
+                      ensure_ascii=False,
+                      default=_support_default)
 
     except UnicodeDecodeError as e:
         raise TypeError('file encoding is not UTF-8.') from e
 
-    return data_dict
+    return file_path
 
 
 def load_json(value):
