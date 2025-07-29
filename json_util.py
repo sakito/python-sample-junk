@@ -9,6 +9,9 @@ import uuid
 import datetime
 import collections
 
+from box import Box
+
+
 def _support_default(value):
     """
     JSON変換できない型が来た場合の処理
@@ -23,6 +26,21 @@ def _support_default(value):
         return sorted(list(value))
 
     raise TypeError('value is not JSON serializable')
+
+
+def read_json(file_path):
+    """
+    JSON読み込み
+    """
+    data_dict = None
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            data_dict = Box(json.load(f))
+
+    except UnicodeDecodeError as e:
+        raise TypeError('file encoding is not UTF-8.') from e
+
+    return data_dict
 
 
 def write_json(data_dict, file_path):
@@ -52,7 +70,7 @@ def load_json(value):
     """
     if isinstance(value, (str, bytes)):
         try:
-            value = json.loads(value)
+            value = Box(json.loads(value))
         except json.decoder.JSONDecodeError as e:
             raise e
 
@@ -118,4 +136,4 @@ def flatten(dict_data, parent_key=None, separator='.') -> dict:
         else:
             items.append((new_key, value))
 
-    return dict(items)
+    return Box(dict(items))
