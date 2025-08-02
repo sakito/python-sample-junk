@@ -16,7 +16,7 @@ def get_prj_root():
 
     return: str ディレクトリパス
     """
-    prj_dir = (Path(__file__).parent / '..' / '..').absolute()
+    prj_dir = (Path(__file__).parent / '..' / '..').absolute().resolve()
 
     return prj_dir
 
