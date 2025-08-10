@@ -5,7 +5,7 @@
 日時関連処理
 """
 
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta, timezone
 
 import dateutil.parser
 import pytz
@@ -132,7 +132,7 @@ def utcmsec_to_dt(target, jst=False):
     if isinstance(target, str):
         # target が str の場合 float に変換
         target = float(target)
-    dt = datetime.utcfromtimestamp(target / 1000000.0)
+    dt = datetime.fromtimestamp(target / 1000000.0, UTC)
     if jst:
         jst = timezone(timedelta(hours=+9), 'JST')
         dt = dt.replace(tzinfo=timezone.utc).astimezone(tz=jst)
