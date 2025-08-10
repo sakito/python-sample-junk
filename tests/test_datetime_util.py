@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (C) 2024 sakito <sakito@sakito.com>
 import datetime
+import time
 
 import datetime_util as t
 
@@ -32,3 +33,16 @@ def test_to_isoformat():
 
     assert '2024-05-25T17:28:50.000000+0919' == t.to_isoformat(t1)
     assert '2024-07-25T17:28:50.000000+0919' == t.to_isoformat(t.add_time(t1, month=2))
+
+def test_utcmsec_to_dt():
+    """
+    utcmsec_to_dt
+    """
+    target = '1752472632215673'
+    gmt_str = '2025-07-14 05:57:12.215'
+    jst_str = '2025-07-14 14:57:12.215+09:00'
+
+    dt = t.utcmsec_to_dt(target)
+    assert gmt_str == dt.isoformat(sep=' ', timespec='milliseconds')
+    dt = t.utcmsec_to_dt(target, True)
+    assert jst_str == dt.isoformat(sep=' ', timespec='milliseconds')

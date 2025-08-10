@@ -5,7 +5,7 @@
 日時関連処理
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 import dateutil.parser
 import pytz
@@ -118,3 +118,23 @@ def format_timedelta(target: timedelta) -> str:
     result = f'{int(hours):02}:{int(minutes):02}:{int(seconds):02}'
 
     return result
+
+
+def utcmsec_to_dt(target, jst=False):
+    """
+    UTC microseconds を datetime に変換
+
+    target: str or float
+      0001/1/1 からの経過時刻
+    jst: bool
+      True: JSTで返す、False: GMTで返す
+    """
+    if isinstance(target, str):
+        # target が str の場合 float に変換
+        target = float(target)
+    dt = datetime.utcfromtimestamp(target / 1000000.0)
+    if jst:
+        jst = timezone(timedelta(hours=+9), 'JST')
+        dt = dt.replace(tzinfo=timezone.utc).astimezone(tz=jst)
+
+    return dt
